@@ -8,11 +8,44 @@ class Alat extends CI_Controller {
         $this->load->library('form_validation');
 	}
     
-    public function index()
+    public function daftar()
     {
         // load view alat
         $data["alat"] = $this->model_alat->getAll();
         $this->load->view("admin/daftar_alat", $data);
+    }
+
+    public function tambah()
+	{
+        $alat = $this->model_alat;
+        $validation = $this->form_validation;
+        $validation->set_rules($alat->rules());
+
+        if ($validation->run()) {
+            $alat->save();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+        // load view admin/tambah_alat.php
+        $this->load->view("admin/tambah_alat");
+    }
+
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect('admin/alat/daftar');
+       
+        $alat = $this->model_alat;
+        $validation = $this->form_validation;
+        $validation->set_rules($alat->rules());
+
+        if ($validation->run()) {
+            $alat->update();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+
+        $data["alat"] = $alat->getById($id);
+        if (!$data["alat"]) show_404();
+        
+        $this->load->view("admin/edit_alat", $data);
     }
 
     public function pinjamkan()
@@ -27,10 +60,11 @@ class Alat extends CI_Controller {
         $this->load->view("admin/pengembalian.php");
     }
 
-    public function daftar_alat()
-	{
-        // load view admin/daftar_alat.php
-        $this->load->view("admin/daftar_alat");
+    public function delete($id=null)
+    {
+    if (!isset($id)) show_404();    
+        if ($this->model_alat->delete($id)) {
+            redirect(site_url('admin/alat/daftar'));
+        }
     }
-
 }

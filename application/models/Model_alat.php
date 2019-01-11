@@ -23,16 +23,15 @@ class Model_alat extends CI_Model
             'rules' => 'numeric'],
 
             ['field' => 'kondisi',
-            'label' => 'Kondisi',
-            'rules' => 'required'],
+            'label' => 'Kondisi'],
 
             ['field' => 'jenis',
             'label' => 'Jenis',
             'rules' => 'required'],
-
+            
             ['field' => 'status',
-            'label' => 'Status',
-            'rules' => '']
+            'label' => 'status']
+
         ];
     }
 

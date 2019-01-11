@@ -48,8 +48,8 @@
                       <td><?php echo $alats->status ?></td>
                       <td style="text-align: center;">
                         <a class="btn btn-success submit" title="Tambah Barang" style="color:white;" href="#"><i class="fa fa-plus"></i></a>
-                        <a class="btn btn-danger submit" title="Hapus Barang" style="color:white;" href="#"><i class="fa fa-trash"></i></a>
-                        <a class="btn btn-primary submit" title="Edit Barang" style="color:white;" href="#"><i class="fa fa-edit"></i></a></td>
+                        <a onclick="deleteConfirm('<?php echo site_url('admin/alat/delete/'.$alats->id_alat) ?>')" class="btn btn-danger submit" title="Hapus Barang" style="color:white;" href="#!"><i class="fa fa-trash"></i></a>
+                        <a href="<?php echo site_url('admin/alat/edit/'.$alats->id_alat) ?>" class="btn btn-primary submit" title="Edit Barang" style="color:white;"><i class="fa fa-edit"></i></a></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -77,6 +77,13 @@
     <!-- Js-->
     <?php $this->load->view("admin/_partials/js.php") ?>
     
+    <script>
+    function deleteConfirm(url){
+       $('#btn-delete').attr('href', url);
+       $('#deleteModal').modal();
+     }
+    </script>
+
   </body>
 
 </html>

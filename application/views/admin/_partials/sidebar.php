@@ -19,11 +19,16 @@
         <span>Pengembalian Alat</span></a>
  </li>    
 
-<li class="nav-item <?php echo $this->uri->segment(3) == 'alat/daftar_alat' ? 'active': '' ?>">
- <a class="nav-link" href="<?php echo site_url('admin/alat') ?>">
+<li class="nav-item <?php echo $this->uri->segment(3) == 'daftar' ? 'active': '' ?>">
+ <a class="nav-link" href="<?php echo site_url('admin/alat/daftar') ?>">
    <i class="fas fa-fw fa-table"></i>
      <span>Daftar Alat</span></a>
 </li>
+
+<li class="nav-item <?php echo $this->uri->segment(3) == 'tambah' ? 'active': '' ?>">
+ <a class="nav-link" href="<?php echo site_url('admin/alat/tambah') ?>">
+   <i class="fas fa-fw fa-user-plus"></i>
+     <span>Tambah Alat</span></a>
 
 <li class="nav-item <?php echo $this->uri->segment(3) == 'tambah_guru' ? 'active': '' ?>">
  <a class="nav-link" href="<?php echo site_url('admin/users/tambah_guru') ?>">
