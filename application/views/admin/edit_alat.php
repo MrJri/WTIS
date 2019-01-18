@@ -38,7 +38,7 @@
                   <div class="form-group">
                     <label for="nama">Nama Alat*</label>
                     <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-                     type="text" name="nama" placeholder="Mikrotik / Cisco / Juniper dll (?)" value="<?php echo $alat->nama ?>" />
+                     type="text" name="nama" placeholder="Mikrotik / Cisco / Juniper dll (?)" value="<?php echo $alat->nama_alat ?>" />
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                       <label for="status">Status</label>
                       <input class="form-control <?php echo form_error('status') ? 'is-invalid':'' ?>"
-                       type="text" name="status" placeholder="Tersisa xx.." value="<?php echo $alat->status ?>"/>
+                       type="text" name="status" placeholder="Tersisa xx.." value="<?php echo $alat->status_alat ?>"/>
                       <div class="invalid-feedback">
                         <?php echo form_error('status') ?>
                       </div>

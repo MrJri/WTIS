@@ -19,7 +19,8 @@
         <span>Pengembalian Alat</span></a>
  </li>    
 
-<li class="nav-item <?php echo $this->uri->segment(3) == 'daftar' ? 'active': '' ?>">
+<li class="nav-item <?php echo $this->uri->segment(3) == 'daftar' ? 'active': '' ?> 
+                    <?php echo $this->uri->segment(3) == 'edit' ? 'active': '' ?>">
  <a class="nav-link" href="<?php echo site_url('admin/alat/daftar') ?>">
    <i class="fas fa-fw fa-table"></i>
      <span>Daftar Alat</span></a>

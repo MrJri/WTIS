@@ -23,7 +23,7 @@ class Alat extends CI_Controller {
 
         if ($validation->run()) {
             $alat->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Data Alat Berhasil Disimpan');
         }
         // load view admin/tambah_alat.php
         $this->load->view("admin/tambah_alat");
@@ -39,7 +39,7 @@ class Alat extends CI_Controller {
 
         if ($validation->run()) {
             $alat->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Data Alat Berhasil Disimpan');
         }
 
         $data["alat"] = $alat->getById($id);

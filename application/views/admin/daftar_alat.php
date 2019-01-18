@@ -41,15 +41,15 @@
                   <tbody>
                   <?php foreach ($alat as $alats): ?>
                     <tr>
-                      <td><?php echo $alats->nama ?></td>
+                      <td><?php echo $alats->nama_alat ?></td>
                       <td><?php echo $alats->jenis ?></td>
                       <td><?php echo $alats->jumlah ?></td>
                       <td><?php echo $alats->kondisi ?></td>
-                      <td><?php echo $alats->status ?></td>
+                      <td><?php echo $alats->status_alat ?></td>
                       <td style="text-align: center;">
-                        <a class="btn btn-success submit" title="Tambah Barang" style="color:white;" href="#"><i class="fa fa-plus"></i></a>
+                        <a href="<?php echo site_url('admin/alat/edit/'.$alats->id_alat) ?>" class="btn btn-primary submit" title="Edit Barang" style="color:white;"><i class="fa fa-edit"></i></a>
                         <a onclick="deleteConfirm('<?php echo site_url('admin/alat/delete/'.$alats->id_alat) ?>')" class="btn btn-danger submit" title="Hapus Barang" style="color:white;" href="#!"><i class="fa fa-trash"></i></a>
-                        <a href="<?php echo site_url('admin/alat/edit/'.$alats->id_alat) ?>" class="btn btn-primary submit" title="Edit Barang" style="color:white;"><i class="fa fa-edit"></i></a></td>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>

@@ -114,14 +114,16 @@
                   </thead>
 
                   <tbody>
+                    <?php foreach ($peminjaman as $pinjaman): ?>
                     <tr>
-                      <td>Fajri Siddiq</td>
-                      <td>Cisco 2960</td>
-                      <td>1</td>
-                      <td>07.00</td>
-                      <td>No 2</td>
-                      <td>Trimans Yogiana</td>
+                      <td><?php echo $pinjaman->nama ?></td>
+                      <td><?php echo $pinjaman->nama_alat ?></td>
+                      <td><?php echo $pinjaman->jumlah_pinjam ?></td>
+                      <td><?php echo $pinjaman->tanggal_peminjaman ?></td>
+                      <td><?php echo $pinjaman->ket ?></td>
+                      <td>INI BELUM</td>
                     </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>

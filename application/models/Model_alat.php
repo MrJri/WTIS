@@ -5,7 +5,7 @@ class Model_alat extends CI_Model
     private $_table = "alat";
 
     public $id_alat;
-    public $nama;
+    public $nama_alat;
     public $jumlah;
     public $kondisi;
     public $jenis;
@@ -49,7 +49,7 @@ class Model_alat extends CI_Model
     {
         $post = $this->input->post();
         $this->id_alat = uniqid();
-        $this->nama = $post["nama"];
+        $this->nama_alat = $post["nama"];
         $this->jumlah = $post["jumlah"];
         $this->kondisi = $post["kondisi"];
         $this->jenis = $post["jenis"];
@@ -61,7 +61,7 @@ class Model_alat extends CI_Model
     {
         $post = $this->input->post();
         $this->id_alat = $post["id"];
-        $this->nama = $post["nama"];
+        $this->nama_alat = $post["nama"];
         $this->jumlah = $post["jumlah"];
         $this->kondisi = $post["kondisi"];
         $this->jenis = $post["jenis"];
@@ -72,5 +72,5 @@ class Model_alat extends CI_Model
     public function delete($id)
     {
         return $this->db->delete($this->_table, array("id_alat" => $id));
-    }
+    }  
 }
