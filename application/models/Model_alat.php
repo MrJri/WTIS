@@ -9,7 +9,7 @@ class Model_alat extends CI_Model
     public $jumlah;
     public $kondisi;
     public $jenis;
-    public $status;
+    public $status_alat;
 
     public function rules()
     {
@@ -20,7 +20,7 @@ class Model_alat extends CI_Model
 
             ['field' => 'jumlah',
             'label' => 'Jumlah',
-            'rules' => 'numeric'],
+            'rules' => 'required'],
 
             ['field' => 'kondisi',
             'label' => 'Kondisi'],
@@ -35,9 +35,16 @@ class Model_alat extends CI_Model
         ];
     }
 
-    public function getAll()
-    {
+    public function getAll(){
         return $this->db->get($this->_table)->result();
+    }
+
+    public function hitung_alat(){
+        //$sql = "select COUNT(*) from alat";
+        //$query = $this->db->query('select COUNT(*) from alat');
+        $result = $this->db->query('select COUNT(*) from alat')->row_array();
+        $count = $result['COUNT(*)']; //convert array jadi string
+        return $count;
     }
     
     public function getById($id)
@@ -53,7 +60,7 @@ class Model_alat extends CI_Model
         $this->jumlah = $post["jumlah"];
         $this->kondisi = $post["kondisi"];
         $this->jenis = $post["jenis"];
-        $this->status = $post["status"];
+        $this->status_alat = $post["status"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -65,7 +72,7 @@ class Model_alat extends CI_Model
         $this->jumlah = $post["jumlah"];
         $this->kondisi = $post["kondisi"];
         $this->jenis = $post["jenis"];
-        $this->status = $post["status"];
+        $this->status_alat = $post["status"];
         $this->db->update($this->_table, $this, array('id_alat' => $post['id']));
     }
 

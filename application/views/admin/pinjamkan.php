@@ -41,18 +41,27 @@
                   </thead>
 
                   <tbody>
+                  <?php foreach ($pinjamkan as $pinjamkans): ?>       
                         <tr>
-                            <td>Cisco 2960</td>
-                            <td>2</td>
-                            <td>M Farhan Madani</td>
-                            <td>Trimans Yogiana</td>
-                            <td>07.30</td>
-                            <td>-</td>
-                            <td>Menunggu admin</td>
-                            <td style="text-align: center;"><a class="btn btn-danger submit" title="Tolak" style="color:white;" href="#"><i class="fa fa-trash"></i> </a>
-                              <a class="btn btn-warning submit" title="Ket." style="color:white;" href="#"><i class="fa fa-edit"></i></a>
-                              <a class="btn btn-primary submit" title="Pinjamkan" style="color:white;" href="#"><i class="fa fa-thumbs-up"></i></a></td>
+                            <td><?php echo $pinjamkans->nama_alat ?></td>
+                            <td><?php echo $pinjamkans->jumlah_pinjam ?></td>
+                            <td><?php echo $pinjamkans->nama ?></td>
+                            <td><?php echo $pinjamkans->penanggung_jawab ?></td>
+                            <td><?php echo $pinjamkans->tanggal_peminjaman ?></td>
+                            <td><?php echo $pinjamkans->ket ?></td>
+                            <td><?php echo $pinjamkans->status ?></td>
+                            <td style="text-align: center;">
+                              <a onclick="hapusPinjaman('<?php echo site_url('admin/alat/submit_pengembalian/'
+                                .$pinjamkans->id_peminjaman) ?>')" class="btn btn-danger submit" title="Tolak" style="color:white;" href="#">
+                                <i class="fa fa-trash"></i> </a>
+                              <a onclick="editPinjaman('')" class="btn btn-warning submit" title="Tambah Keterangan"
+                                 style="color:white;" href="#"><i class="fa fa-edit"></i></a>
+                              <a onclick="konfirmasiPinjamkan('<?php echo site_url('admin/alat/submit_pinjamkan/'
+                                .$pinjamkans->id_peminjaman) ?>')"
+                                  class="btn btn-primary submit" title="Pinjamkan" style="color:white;" href="#">
+                                <i class="fa fa-thumbs-up"></i></a></td>
                           </tr>
+                          <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -77,6 +86,21 @@
     <?php $this->load->view("admin/_partials/modal.php") ?>
     <!-- Js-->
     <?php $this->load->view("admin/_partials/js.php") ?>
+    
+    <script>
+    function editPinjaman(url){
+       $('#btn-edit-pinjaman').attr('href', url);
+       $('#editpinjamanModal').modal();
+     }
+     function konfirmasiPinjamkan(url){
+       $('#btn-konfirmasi-pinjamkan').attr('href', url);
+       $('#konfirmasipinjamkanModal').modal();
+     }
+     function hapusPinjaman(url){
+       $('#btn-delete-peminjaman').attr('href', url);
+       $('#hapuspeminjamanModal').modal();
+     }
+    </script>
 
   </body>
 

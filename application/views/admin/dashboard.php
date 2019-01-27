@@ -35,9 +35,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-comments"></i>
                   </div>
-                  <div class="mr-5">Total Siswa 200</div>
+                  <div class="mr-5">Total Siswa <?php echo $total_siswa ?></div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="admin_daftarsiswa.html">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/akun/siswa') ?>">
                   <span class="float-left">View Details!</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -51,9 +51,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">Total Guru 20</div>
+                  <div class="mr-5">Total Guru <?php echo $total_guru ?></div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="admin_daftarguru.html">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/akun/guru') ?>">
                   <span class="float-left">View Details!</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -67,9 +67,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                   </div>
-                  <div class="mr-5">Total Alat 80</div>
+                  <div class="mr-5">Total Alat <?php echo $total_alat ?></div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="admin_daftaralat.html">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/alat/daftar') ?>">
                   <span class="float-left">View Details!</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -114,14 +114,14 @@
                   </thead>
 
                   <tbody>
-                    <?php foreach ($peminjaman as $pinjaman): ?>
+                    <?php foreach ($peminjaman as $peminjamans): ?>
                     <tr>
-                      <td><?php echo $pinjaman->nama ?></td>
-                      <td><?php echo $pinjaman->nama_alat ?></td>
-                      <td><?php echo $pinjaman->jumlah_pinjam ?></td>
-                      <td><?php echo $pinjaman->tanggal_peminjaman ?></td>
-                      <td><?php echo $pinjaman->ket ?></td>
-                      <td>INI BELUM</td>
+                      <td><?php echo $peminjamans->nama ?></td>
+                      <td><?php echo $peminjamans->nama_alat ?></td>
+                      <td><?php echo $peminjamans->jumlah_pinjam ?></td>
+                      <td><?php echo $peminjamans->tanggal_peminjaman ?></td>
+                      <td><?php echo $peminjamans->ket ?></td>
+                      <td><?php echo $peminjamans->penanggung_jawab ?></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>

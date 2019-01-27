@@ -36,7 +36,7 @@
                   <div class="form-group">
                     <label for="nama">Nama Alat*</label>
                     <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-                     type="text" name="nama" placeholder="Mikrotik / Cisco / Juniper dll (?)" autofocus />
+                     type="text" name="nama" placeholder="Mikrotik / Cisco / Juniper dll (?)" autofocus required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
                     </div>
@@ -45,7 +45,7 @@
                   <div class="form-group">
                       <label for="jenis">Jenis*</label>
                       <input class="form-control <?php echo form_error('jenis') ? 'is-invalid':'' ?>"
-                       type="text" name="jenis" placeholder="Router / Switch dll.." />
+                       type="text" name="jenis" placeholder="Router / Switch dll.." required/>
                       <div class="invalid-feedback">
                         <?php echo form_error('jenis') ?>
                       </div>
@@ -54,7 +54,7 @@
                   <div class="form-group">
                     <label for="jumlah">Jumlah*</label>
                     <input class="form-control <?php echo form_error('jumlah') ? 'is-invalid':'' ?>"
-                     type="number" name="jumlah" placeholder="Jumlah" />
+                     type="number" name="jumlah" placeholder="Jumlah" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('jumlah') ?>
                     </div>
@@ -63,7 +63,7 @@
                   <div class="form-group">
                       <label for="kondisi">Kondisi</label>
                       <input class="form-control <?php echo form_error('kondisi') ? 'is-invalid':'' ?>"
-                       type="text" name="kondisi" placeholder="Baik / Buruk" />
+                      type="text" name="kondisi" placeholder="Baik / Buruk" />
                       <div class="invalid-feedback">
                         <?php echo form_error('kondisi') ?>
                       </div>
@@ -78,7 +78,7 @@
                       </div>
                     </div> 
 
-                  <input class="btn btn-success" type="submit" name="btn" value="Tambah Ya !" />
+                  <button class="btn btn-success" type="submit">Tambah Ya !</button>
                 </form>
     
               </div>

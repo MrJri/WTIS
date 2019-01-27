@@ -32,18 +32,20 @@
      <span>Tambah Alat</span></a>
 
 <li class="nav-item <?php echo $this->uri->segment(3) == 'tambah_guru' ? 'active': '' ?>">
- <a class="nav-link" href="<?php echo site_url('admin/users/tambah_guru') ?>">
+ <a class="nav-link" href="<?php echo site_url('admin/akun/tambah_guru') ?>">
    <i class="fas fa-fw fa-user-plus"></i>
      <span>Tambah Guru</span></a>
 </li>  
-<li class="nav-item <?php echo $this->uri->segment(3) == 'guru' ? 'active': '' ?>">
- <a class="nav-link" href="<?php echo site_url('admin/users/guru') ?>">
+<li class="nav-item <?php echo $this->uri->segment(3) == 'guru' ? 'active': '' ?>
+                    <?php echo $this->uri->segment(3) == 'edit_guru' ? 'active': '' ?>">
+ <a class="nav-link" href="<?php echo site_url('admin/akun/guru') ?>">
    <i class="fas fa-fw fa-user"></i>
      <span>Daftar Guru</span></a>
 </li>
     
-<li class="nav-item <?php echo $this->uri->segment(3) == 'daftar_siswa' ? 'active': '' ?>">
- <a class="nav-link" href="<?php echo site_url('admin/users/daftar_siswa') ?>">
+<li class="nav-item <?php echo $this->uri->segment(3) == 'siswa' ? 'active': '' ?>
+                    <?php echo $this->uri->segment(3) == 'edit_siswa' ? 'active': '' ?>">
+ <a class="nav-link" href="<?php echo site_url('admin/akun/siswa') ?>" >
    <i class="fas fa-fw fa-users"></i>
      <span>Daftar Siswa</span></a>
 </li>
