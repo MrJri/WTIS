@@ -67,7 +67,7 @@
       </div>
       <div class="modal-body">
         <?php foreach ($pinjamkan as $pinjamkans): ?>       
-        <form action="<?php base_url('admin/edit_pinjaman') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php base_url('admin/alat/edit_pinjaman') ?>" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" value="<?php echo $pinjamkans->id_peminjaman;?>" />
           <div class="form-group">
           <input type=text class="form-control" name="keterangan" value="<?php echo $pinjamkans->ket;?>">

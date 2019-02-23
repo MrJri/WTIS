@@ -50,7 +50,7 @@
                     <td><?php echo $pengembalians->tanggal_pengembalian ?></td>
                     <td><?php echo $pengembalians->ket ?></td>
                     <td style="text-align: center;">
-                    <a onclick="konfirmasiPengembalian('<?php echo site_url('admin/alat/submit_pengembalian/'
+                    <a onclick="konfirmasiPengembalian('<?php echo site_url('admin/submit_pengembalian/'
                         .$pengembalians->id_peminjaman) ?>')" 
                         class="btn btn-primary submit" type="submit "title="OK" style="color:white;" href="#">
                         <i class="fa fa-thumbs-up"></i></a></td>
@@ -60,7 +60,10 @@
                 </table>
             </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Page rendered in <strong>{elapsed_time}</strong> seconds. 
+            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
+            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+            </div>
         </div>
         </div>
         <!-- /.container-fluid -->

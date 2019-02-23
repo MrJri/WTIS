@@ -37,7 +37,7 @@
                   </div>
                   <div class="mr-5">Total Siswa <?php echo $total_siswa ?></div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/akun/siswa') ?>">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/siswa') ?>">
                   <span class="float-left">View Details!</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -53,7 +53,7 @@
                   </div>
                   <div class="mr-5">Total Guru <?php echo $total_guru ?></div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/akun/guru') ?>">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/guru') ?>">
                   <span class="float-left">View Details!</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -69,7 +69,7 @@
                   </div>
                   <div class="mr-5">Total Alat <?php echo $total_alat ?></div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/alat/daftar') ?>">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/daftar') ?>">
                   <span class="float-left">View Details!</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -116,19 +116,23 @@
                   <tbody>
                     <?php foreach ($peminjaman as $peminjamans): ?>
                     <tr>
-                      <td><?php echo $peminjamans->nama ?></td>
-                      <td><?php echo $peminjamans->nama_alat ?></td>
-                      <td><?php echo $peminjamans->jumlah_pinjam ?></td>
-                      <td><?php echo $peminjamans->tanggal_peminjaman ?></td>
-                      <td><?php echo $peminjamans->ket ?></td>
-                      <td><?php echo $peminjamans->penanggung_jawab ?></td>
+                      <td><?php echo $peminjamans->siswa; ?></td>
+                      <td><?php echo $peminjamans->nama_alat; ?></td>
+                      <td><?php echo $peminjamans->jumlah_pinjam; ?></td>
+                      <td><?php echo $peminjamans->tanggal_peminjaman; ?></td>
+                      <td><?php echo $peminjamans->ket; ?></td>
+                      <td><?php echo $peminjamans->guru; ?></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <!-- <div class="card-footer small text-muted"> Updated yesterday at 11:59 PM</div> -->
+            <div class="card-footer small text-muted">Page rendered in <strong>{elapsed_time}</strong> seconds. 
+            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
+            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+            </div>
           </div>
 
         </div>

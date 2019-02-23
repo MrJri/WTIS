@@ -22,6 +22,8 @@
         <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
+          <a href="<?php echo site_url('admin/daftar') ?>"><i class=""></i>
+                    , Ke Daftar Alat</a>
 				</div>
 				<?php endif; ?>
 
@@ -32,7 +34,7 @@
                   Form Tambah Alat
               </div>
               <div class="card-body">
-                <form action="<?php base_url('admin/alat/tambah') ?>" method="post" enctype="multipart/form-data" >
+                <form action="<?php base_url('admin/tambah') ?>" method="post" enctype="multipart/form-data" >
                   <div class="form-group">
                     <label for="nama">Nama Alat*</label>
                     <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
@@ -83,9 +85,10 @@
     
               </div>
     
-              <div class="card-footer small text-muted">
-                * wajib diisi
-              </div>
+              <div class="card-footer small text-muted">* Wajib diisi | Page rendered in <strong>{elapsed_time}</strong> seconds. 
+            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
+            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+            </div>
 
             </div>
             <!-- /.container-fluid -->

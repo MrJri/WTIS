@@ -13,6 +13,34 @@ class Model_akun extends CI_Model{
             'label' => 'email',
             'rules' => 'required'],
 
+            ['field' => 'nis',
+            'label' => 'nis',
+            'rules' => 'required|integer'],
+
+            ['field' => 'tingkat',
+            'label' => 'tingkat',
+            'rules' => 'required'],
+
+            ['field' => 'kelas',
+            'label' => 'kelas',
+            'rules' => 'required'],
+
+            ['field' => 'password',
+            'label' => 'password',
+            'rules' => 'required']
+        ];
+    }
+
+    public function rules_guru(){
+        return [
+            ['field' => 'nama',
+            'label' => 'Nama',
+            'rules' => 'required|trim'],
+
+            ['field' => 'email',
+            'label' => 'email',
+            'rules' => 'required'],
+
             ['field' => 'password',
             'label' => 'password',
             'rules' => 'required']
@@ -45,9 +73,14 @@ class Model_akun extends CI_Model{
 
     public function save_siswa(){
         $post = $this->input->post();
+        $this->id_akun = uniqid();
+        $this->nis = $post["nis"];
         $this->nama = $post["nama"];
-        $this->password = md5($this->input->post("password"));
         $this->email = $post["email"];
+        $this->tingkat = $post["tingkat"];
+        $this->kelas = $post["kelas"];
+        $this->no_hp = $post["nohp"];
+        $this->password = md5($this->input->post("password"));
         $this->level = "siswa";
         $this->db->insert($this->_table, $this);
     }
@@ -55,9 +88,13 @@ class Model_akun extends CI_Model{
     public function update_siswa(){
         $post = $this->input->post();
         $this->id_akun = $post["id"];
+        $this->nis = $post["nis"];
         $this->nama = $post["nama"];
-        $this->password = md5($this->input->post("password"));
         $this->email = $post["email"];
+        $this->tingkat = $post["tingkat"];
+        $this->kelas = $post["kelas"];
+        $this->no_hp = $post["nohp"];
+        $this->password = md5($this->input->post("password"));
         $this->db->update($this->_table, $this, array('id_akun' => $post['id']));
     }
     
@@ -67,21 +104,30 @@ class Model_akun extends CI_Model{
         return $this->db->get($this->_table)->result();
     }
 
+    public function getnamaguru(){
+        $query=$this->db->query("SELECT id_akun,nama FROM akun WHERE level='guru' ")->result();
+        return $query;
+        //$this->db->select('id', 'nama');
+        //$this->db->where('level', 'guru');
+        //return $this->db->get($this->_table)->result();
+    }
+
     public function save_guru(){
         $post = $this->input->post();
+        $this->id_akun = uniqid();
         $this->nama = $post["nama"];
-        $this->password = md5($this->input->post("password"));
         $this->email = $post["email"];
+        $this->password = md5($this->input->post("password"));
         $this->level = "guru";
         $this->db->insert($this->_table, $this);
     }
 
     public function update_guru(){
         $post = $this->input->post();
-        $this->id_akun = $post["id"];
         $this->nama = $post["nama"];
-        $this->password = md5($this->input->post("password"));
         $this->email = $post["email"];
+        $this->no_hp = $post["nohp"];
+        $this->password = md5($this->input->post("password"));
         $this->db->update($this->_table, $this, array('id_akun' => $post['id']));
     }
 

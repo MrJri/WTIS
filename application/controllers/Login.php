@@ -51,44 +51,6 @@ class Login extends CI_Controller{
                 </script>";
             }
         }
-        //if(empty($_SESSION['ses_id'] && $_SESSION))
-        /* $email=$this->input->post('email');
-        $password=$this->input->post('password');
-        $cek_akun=$this->model_login->auth_akun($email,$password);
-
-        
-        if($cek_akun->num_rows() > 0){ //cek jika ada data akun
-                $data=$cek_akun->row_array();
-                $this->session->set_userdata('masuk',TRUE);
-                 if($data['level']=='admin'){ //Akses admin
-                    $this->session->set_userdata('akses','admin');
-                    $this->session->set_userdata('ses_id',$data['id_akun']);
-                    $this->session->set_userdata('ses_nama',$data['nama']);
-                    redirect('admin');
-                }
-                 else if($data['level']=='aspiran'){ //Akses aspiran
-                    $this->session->set_userdata('akses','aspiran');
-                    $this->session->set_userdata('ses_id',$data['id_akun']);
-                    $this->session->set_userdata('ses_nama',$data['nama']);
-                    redirect('aspiran');
-                }
-                else if($data['level']=='guru'){ //Akses guru
-                    $this->session->set_userdata('akses','guru');
-                    $this->session->set_userdata('ses_id',$data['id_akun']);
-                    $this->session->set_userdata('ses_nama',$data['nama']);
-                    redirect('guru');
-                }
-                else if($data['level']=='siswa'){ //Akses siswa
-                    $this->session->set_userdata('akses','siswa');
-                    $this->session->set_userdata('ses_id',$data['id_akun']);
-                    $this->session->set_userdata('ses_nama',$data['nama']);
-                    redirect('siswa');
-                }
-        }
-        else{ // jika username dan password tidak ditemukan atau salah
-            $this->load->view("login");
-            echo $this->session->set_flashdata('msg','Username Atau Password Salah');           
-        }*/
     }
  
     function logout(){

@@ -83,9 +83,7 @@ class Alat extends CI_Controller {
 
     public function submit_pinjamkan($id=null){       
         if (!isset($id)) redirect('admin/alat/pinjamkan');
-        if($this->model_peminjaman->submit_pinjamkan($id)){
-            redirect(site_url('admin/alat/pinjamkan'));
-        }
+        if($this->model_peminjaman->submit_pinjamkan($id));
     }
 
     public function pengembalian(){        

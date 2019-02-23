@@ -1,18 +1,18 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index extends CI_Controller{
+class Aspiran extends CI_Controller{
     function __construct(){
         parent::__construct();
         if($this->session->userdata('isLoggedin') == FALSE){
             redirect('login');
         }
-        else if($this->session->userdata('level') != 'siswa'){
+        else if($this->session->userdata('level') != 'aspiran'){
             redirect('login');
         }
     }
 
     function index(){
-        $this->load->view('siswa/index');
+        $this->load->view('aspiran/index');
     }
 }

@@ -1,16 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Akun extends CI_Controller {
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
+        if($this->session->userdata('isLoggedin') == FALSE){
+            redirect('login');
+        }
+        else if($this->session->userdata('level') != 'admin'){
+            redirect('login');
+        }
         $this->load->model('model_akun');
 	}
     
-    public function index()
-    {
+    public function index(){
         redirect('');
     }
+
+    public function edit_akun($id = null){
+        if (!isset($id)) redirect('admin/');       
+        $akun = $this->model_akun;
+        $validation = $this->form_validation;
+        $validation->set_rules($akun->rules_guru());
+        if ($validation->run()) {            
+            $akun->update_guru();
+            $this->session->set_flashdata('success', 'Data Admin Berhasil Disimpan');
+        }
+        $data["akun"] = $akun->getById($id);
+        if (!$data["akun"]) show_404();
+        $this->load->view("admin/edit_admin", $data);
+    }
+
 
     public function siswa(){
         $data["siswa"] = $this->model_akun->getAllsiswa();
@@ -69,7 +88,7 @@ class Akun extends CI_Controller {
         if (!isset($id)) redirect('admin/akun/guru');       
         $akun = $this->model_akun;
         $validation = $this->form_validation;
-        $validation->set_rules($akun->rules());
+        $validation->set_rules($akun->rules_guru());
         if ($validation->run()) {            
             $akun->update_guru();
             $this->session->set_flashdata('success', 'Data Akun Guru Berhasil Disimpan');
@@ -82,7 +101,7 @@ class Akun extends CI_Controller {
     public function tambah_guru(){
         $akun = $this->model_akun;
         $validation = $this->form_validation;
-        $validation->set_rules($akun->rules());
+        $validation->set_rules($akun->rules_guru());
         if ($validation->run()) {
             $akun->save_guru();
             $this->session->set_flashdata('success', 'Data Guru Berhasil Disimpan');

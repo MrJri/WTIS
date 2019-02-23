@@ -30,7 +30,7 @@ class Model_alat extends CI_Model
             'rules' => 'required'],
             
             ['field' => 'status',
-            'label' => 'status']
+            'label' => 'Status']
 
         ];
     }

@@ -31,7 +31,9 @@
                     <tr>
                       <th>NIS</th>
                       <th>Nama</th>
+                      <th>Kelas</th>
                       <th>Email</th>
+                      <th>No. HP</th>
                       <th style="text-align: center;">Aksi</th>
                     </tr>
                   </thead>
@@ -41,12 +43,14 @@
                     <tr>
                       <td><?php echo $siswas ->nis ?></td>
                       <td><?php echo $siswas ->nama ?></td>
+                      <td><?php echo $siswas ->tingkat." - ".$siswas ->kelas ?></td>
                       <td><?php echo $siswas ->email ?></td>
+                      <td><?php echo $siswas ->no_hp ?></td>
                       <td style="text-align: center;">
                         <a class="btn btn-primary submit" title="Edit Data" style="color:white;" 
-                          href="<?php echo site_url('admin/akun/edit_siswa/'.$siswas->id_akun) ?>">
+                          href="<?php echo site_url('admin/edit_siswa/'.$siswas->id_akun) ?>">
                           <i class="fa fa-edit"></i></a>
-                        <a onclick="deleteConfirm('<?php echo site_url('admin/akun/delete_siswa/'.$siswas->id_akun) ?>')" 
+                        <a onclick="deleteConfirm('<?php echo site_url('admin/delete_siswa/'.$siswas->id_akun) ?>')" 
                           class="btn btn-danger submit" title="Hapus Data" style="color:white;" href="#">
                             <i class="fa fa-trash"></i></a></td>
                     </tr>
@@ -55,7 +59,10 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Page rendered in <strong>{elapsed_time}</strong> seconds. 
+            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
+            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+            </div>
           </div>
 
         </div>

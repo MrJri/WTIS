@@ -28,12 +28,12 @@
           <!-- Page Content -->
           <div class="card mb-3">
               <div class="card-header">
-                <a href="<?php echo site_url('admin/alat/daftar') ?>"><i class="fas fa-arrow-left"></i>
+                <a href="<?php echo site_url('admin/daftar') ?>"><i class="fas fa-arrow-left"></i>
                     Back</a>
               </div>
 
               <div class="card-body">
-                <form action="<?php base_url('admin/alat/edit') ?>" method="post" enctype="multipart/form-data" >
+                <form action="<?php base_url('admin/edit') ?>" method="post" enctype="multipart/form-data" >
                   <input type="hidden" name="id" value="<?php echo $alat->id_alat?>" />
                   <div class="form-group">
                     <label for="nama">Nama Alat*</label>

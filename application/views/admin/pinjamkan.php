@@ -45,18 +45,18 @@
                         <tr>
                             <td><?php echo $pinjamkans->nama_alat ?></td>
                             <td><?php echo $pinjamkans->jumlah_pinjam ?></td>
-                            <td><?php echo $pinjamkans->nama ?></td>
-                            <td><?php echo $pinjamkans->penanggung_jawab ?></td>
+                            <td><?php echo $pinjamkans->siswa ?></td>
+                            <td><?php echo $pinjamkans->guru ?></td>
                             <td><?php echo $pinjamkans->tanggal_peminjaman ?></td>
                             <td><?php echo $pinjamkans->ket ?></td>
                             <td><?php echo $pinjamkans->status ?></td>
                             <td style="text-align: center;">
-                              <a onclick="hapusPinjaman('<?php echo site_url('admin/alat/submit_pengembalian/'
+                              <a onclick="hapusPinjaman('<?php echo site_url('admin/submit_pengembalian/'
                                 .$pinjamkans->id_peminjaman) ?>')" class="btn btn-danger submit" title="Tolak" style="color:white;" href="#">
                                 <i class="fa fa-trash"></i> </a>
                               <a onclick="editPinjaman('')" class="btn btn-warning submit" title="Tambah Keterangan"
                                  style="color:white;" href="#"><i class="fa fa-edit"></i></a>
-                              <a onclick="konfirmasiPinjamkan('<?php echo site_url('admin/alat/submit_pinjamkan/'
+                              <a onclick="konfirmasiPinjamkan('<?php echo site_url('admin/submit_pinjamkan/'
                                 .$pinjamkans->id_peminjaman) ?>')"
                                   class="btn btn-primary submit" title="Pinjamkan" style="color:white;" href="#">
                                 <i class="fa fa-thumbs-up"></i></a></td>
@@ -66,7 +66,10 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Page rendered in <strong>{elapsed_time}</strong> seconds. 
+            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
+            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+            </div>
           </div>
         </div>
         <!-- /.container-fluid -->

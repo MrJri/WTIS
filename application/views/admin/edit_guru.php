@@ -22,7 +22,7 @@
         <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
-                    <a href="<?php echo site_url('admin/akun/guru') ?>"><i class=""></i>
+                    <a href="<?php echo site_url('admin/guru') ?>"><i class=""></i>
                     , Kembali</a>
 				</div>
 		<?php endif; ?>
@@ -34,7 +34,7 @@
                   Edit Akun Guru
               </div>
               <div class="card-body">
-                <form action="<?php base_url('admin/akun/edit_guru') ?>" method="post" enctype="multipart/form-data" >
+                <form action="<?php base_url('admin/edit_guru') ?>" method="post" enctype="multipart/form-data" >
                   <?php /*<div class="form-group">
                     <label for="nama">NIP*</label>
                     <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
@@ -43,15 +43,28 @@
                       <?php echo form_error('nama') ?>
                     </div>
                   </div> */ ?>
-                    <input type="hidden" name="id" value="<?php echo $akun->id_akun?>" />
-                  <div class="form-group">
-                      <label for="nama">Nama*</label>
+                  <input type="hidden" name="id" value="<?php echo $akun->id_akun?>" />
+                  <div class="form-row">
+                  <div class="form-group col-md-3">
+                      <label for="nama">Nama</label>
                       <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
                        type="text" name="nama" placeholder="Nama Lengkap" value="<?php echo $akun->nama ?>" required autofocus/>
                       <div class="invalid-feedback">
                         <?php echo form_error('nama') ?>
                       </div>
                     </div>
+
+                    <div class="form-group col-md-3">
+                      <label for="nohp">No. HP</label>
+                      <input class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number" maxlength = "14"
+                        name="nohp" placeholder="089xxx" value="<?php echo $akun->no_hp ?>" required/>
+                      <div class="invalid-feedback">
+                        <?php echo form_error('nohp') ?>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="form-group">
                     <label for="email">Email*</label>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WTIS Admin Login</title>
+    <title>WTIS Login</title>
 
     <!-- Bootstrap core CSS-->
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -31,19 +31,19 @@
           <form action="<?php base_url('login/login'); ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="email">Email address</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required="required" autofocus>
+                <label for="email">Email Kamu :)</label>  
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
                 <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="required">
-                <label for="password">Password</label>
+                <label for="password">Passwordnya sayang</label>
               </div>
             </div>
             
-            <input class="btn btn-primary btn-block" type="submit" value="Login">
-            <a class="btn btn-warning btn-block" style="color:white;" href="register.html">Register an Account</a>  
+            <input class="btn btn-primary btn-block" type="submit" value="Cuss Login">
+            <!-- <a class="btn btn-warning btn-block" style="color:white;" href="<?php //echo site_url('register'); ?>">Register an Account</a>  -->
             <a class="btn btn-danger btn-block" href="forgot-password.html">Forgot Password?</a>
           </form>
         </div>

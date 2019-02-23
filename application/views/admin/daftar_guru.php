@@ -31,6 +31,7 @@
                         <tr>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>No. HP</th>
                         <th style="text-align: center;">Aksi</th>
                         </tr>
                     </thead>
@@ -40,11 +41,12 @@
                         <tr>
                         <td><?php echo $gurus ->nama ?></td>
                         <td><?php echo $gurus ->email ?></td>
+                        <td><?php echo $gurus ->no_hp ?></td>
                         <td style="text-align: center;">
                             <a class="btn btn-primary submit" title="Edit Akun" style="color:white;" 
-                                href="<?php echo site_url('admin/akun/edit_guru/'.$gurus->id_akun) ?>">
+                                href="<?php echo site_url('admin/edit_guru/'.$gurus->id_akun) ?>">
                                 <i class="fa fa-edit"></i></a>
-                            <a onclick="deleteConfirm('<?php echo site_url('admin/akun/delete_guru/'.$gurus->id_akun) ?>')" 
+                            <a onclick="deleteConfirm('<?php echo site_url('admin/delete_guru/'.$gurus->id_akun) ?>')" 
                                 class="btn btn-danger submit" title="Hapus Akun" style="color:white;" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
@@ -52,7 +54,10 @@
                     </table>
                 </div>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <div class="card-footer small text-muted">Page rendered in <strong>{elapsed_time}</strong> seconds. 
+            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
+            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+            </div>
             </div>
 
             </div>
