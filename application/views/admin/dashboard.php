@@ -130,8 +130,7 @@
             </div>
             <!-- <div class="card-footer small text-muted"> Updated yesterday at 11:59 PM</div> -->
             <div class="card-footer small text-muted">Page rendered in <strong>{elapsed_time}</strong> seconds. 
-            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
-            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+                 <?php // echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
             </div>
           </div>
 

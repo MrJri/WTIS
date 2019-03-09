@@ -7,7 +7,8 @@ class Model_peminjaman extends CI_Model
     public $id_peminjam;
     public $id_alat;
     public $id_penanggung;
-    public $jumlah;
+    public $jumlah_pinjam;
+    
 
     public function rules(){
         return [
@@ -29,15 +30,19 @@ class Model_peminjaman extends CI_Model
         ];
     }
 
-    function tambah_pinjaman(){
-        $post= $this->input->post();
-        $this->id_peminjam = $post["id_peminjam"];
-        $this->id_alat = $post["id_alat"];
-        $this->id_penanggung = $post["penanggungjawab"];
-        $this->jumlah_pinjam = $post["jumlah"];
-        $this->db->insert($this->_table, $this);
+    function tambah_pinjaman($total){
+        // Cycle true all cart items and insert them to db
+        for($i=0;$i<$total;$i++){
+            $post = $this->input->post();                        
+            $this->id_peminjam = $post["id_siswa"];
+            $this->id_penanggung = $post["id_guru"];
+            $this->id_alat = $post["id_alat".$i.""];
+            $this->jumlah_pinjam = $post["jumlah_pinjam".$i.""];
+            $this->db->insert($this->_table, $this);
+            $this->cart->destroy(); // destroy all cart item
+        }
         echo "<script>alert('Sukses !');
-                </script>";
+                    </script>";
     }
 
     function edit_pinjaman(){

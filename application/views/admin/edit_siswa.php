@@ -124,8 +124,8 @@
     
               </div>
     
-              <div class="card-footer small text-muted">
-                * wajib diisi
+              <div class="card-footer small text-muted">* Wajib diisi | Page rendered in <strong>{elapsed_time}</strong> seconds. 
+                   <?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
               </div>
     
     

@@ -26,7 +26,6 @@
                                 <?php foreach ($data as $row) : ?>
                                     <div class="col-md-6">
                                         <div class="card mb-3">
-                                            <!-- <img width="200" src="<?php //echo base_url().'assets/images/'.$row->product_image;?>"> -->
                                             <div class="card-header text-center"><?php echo $row->nama_alat;?>
                                             </div>
                                             <div class="card-body">
@@ -38,20 +37,21 @@
                                                         <input value="<?php echo $row->jumlah;?>" class="form-control form-control-sm" readonly>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <!--<div class="col-md-7">
-                                                    <h4><?php //echo number_format($row->product_price);?></h4>
-                                                    </div>-->
-                                                    <div class="col-md-7">
-                                                        Mau Brp?
-                                                    </div>
-                                                    <div class="col-md-5">  
-                                                        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                        type = "number" maxlength = "14"
-                                                        id="<?php echo $row->id_alat;?>" value="1" class="quantity form-control form-control-sm">
-                                                    </div>
-                                                </div>                                                
-                                                <br><button class="add_cart btn btn-success btn-block col-md" data-productid="<?php echo $row->id_alat;?>" data-productname="<?php echo $row->nama_alat;?>" data-productprice="0">Pinjam</button>
+                                                <div class="subalat">
+                                                    <form>
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            Mau Brp?
+                                                        </div>
+                                                        <div class="col-md-5">  
+                                                        <?php   echo form_hidden('id_alat', $row->id_alat);?>
+                                                        <?php   echo form_input('quantity', '1', 'maxlength="2" class="form-control form-control-sm"'); ?>
+                                                        </div>
+                                                    </div>                                                
+                                                    <br>
+                                                    <input type="submit" class="btn btn-success btn-block col-md" value="Pinjam">
+                                                    <?php       echo form_close(); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -63,25 +63,13 @@
                     <div class="col-md-6">
                         <div class="card mb-3">
                             <h4 class="card-header">List Pinjam</h4>    
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" >
-                                        <thead>
-                                            <tr>
-                                                <th>Alat</th>
-                                                
-                                                <th>Jumlah</th>
-                                                <!--<th>Total</th>-->
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="detail_cart">
-                                        </tbody>
-                                    </table>
+                            <!--<div class="card-body">-->
+                                <div id="cart_content">
+                                    <?php //$this->load->view('siswa/cart'); ?>
                                 </div>
-                            </div>
+                            <!--</div>-->
                             <div class="card-footer small text-muted">
-                                Page rendered in <strong>{elapsed_time}</strong> seconds. 
+                                Jika jumlah alat nya 0(nol), alat akan dihapus. Page rendered in <strong>{elapsed_time}</strong> seconds.
                             </div>
                         </div>
                     </div>
@@ -105,7 +93,43 @@
 
 </body>
 
-<script type="text/javascript">
+<script>
+    $(document).ready(function() { 
+        var link = "/weteies/index.php/"; // Url to your application (including index.php/)
+        $('#cart_content').load("<?php echo site_url('siswa/show_cart');?>");
+        
+        /*place jQuery actions here*/ 
+        $("div.subalat form").submit(function() {
+            // Get the product ID and the quantity 
+            var id = $(this).find('input[name=id_alat]').val();
+            var qty = $(this).find('input[name=quantity]').val();
+            $.ajax({
+                url : "<?php echo site_url('siswa/addcart');?>",
+                method : "POST",
+                data : {id_alat: id, quantity: qty},
+                success: function(data){
+                    show_cart();
+                    $('#cart_content').load("<?php echo site_url('siswa/show_cart');?>");
+                }
+            });
+            
+            /*$.post(link + "siswa/addcart", { id_alat: id, quantity: qty, ajax: '1' },
+                function(data){
+                    // Interact with returned data
+                    if(data == 'true'){    
+                        show_cart();
+                        //$.get(link + "siswa/show_cart", function(cart){ // Get the contents of the url siswa/show_cart
+                        //        $("#cart_content").html(cart); // Replace the information in the div #cart_content with the retrieved data  
+                        //}); 		   
+                    }else{
+                        alert("Product does not exist");
+                    }
+            });*/
+        });
+    });
+</script>
+
+<!--<script type="text/javascript">
     $(document).ready(function(){
 
         $('.pinjam').click(function(){
@@ -114,7 +138,7 @@
             var product_price = $(this).data("productprice");
             var quantity      = $('#' + id).val();
             $.ajax({
-                url : "<?php echo site_url('siswa/add_to_cart');?>",
+                url : "<?php //echo site_url('siswa/add_to_cart');?>",
                 method : "POST",
                 data : {id: id, nama: nama, product_price: product_price, quantity: quantity},
                 success: function(data){
@@ -129,7 +153,7 @@
             var product_price = $(this).data("productprice");
             var quantity      = $('#' + id).val();
             $.ajax({
-                url : "<?php echo site_url('siswa/add_to_cart');?>",
+                url : "<?php //echo site_url('siswa/add_to_cart');?>",
                 method : "POST",
                 data : {id: id, nama: nama, product_price: product_price, quantity: quantity},
                 success: function(data){
@@ -139,13 +163,13 @@
         });
  
          
-        $('#detail_cart').load("<?php echo site_url('siswa/load_cart');?>");
+        $('#detail_cart').load("<?php //echo site_url('siswa/load_cart');?>");
  
          
         $(document).on('click','.romove_cart',function(){
             var row_id=$(this).attr("id"); 
             $.ajax({
-                url : "<?php echo site_url('siswa/delete_cart');?>",
+                url : "<?php // echo site_url('siswa/delete_cart');?>",
                 method : "POST",
                 data : {row_id : row_id},
                 success :function(data){
@@ -154,6 +178,6 @@
             });
         });
     });
-</script>
+</script>-->
 
 </html>

@@ -81,14 +81,13 @@
                           <option value="C">C</option>
                           <option value="D">D</option>
                         </select>
-                      </div>
                     </div>
-                  
-                    <div class="form-row">
+                  </div>
+                  <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="email">Email</label>
                       <input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>"
-                      type="email" name="email" placeholder="siswa@contoh.com" required />
+                             type="email" name="email" placeholder="siswa@contoh.com" required />
                       <div class="invalid-feedback">
                         <?php echo form_error('email') ?>
                       </div>
@@ -97,14 +96,14 @@
                     <div class="form-group col-md-6">
                       <label for="password">Password</label>
                       <input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>"
-                       type="password" name="password" placeholder="Masukkan Password" required />
+                             type="password" name="password" placeholder="Masukkan Password" required />
                       <div class="invalid-feedback">
                         <?php echo form_error('password') ?>
                       </div>
                     </div>
-                    </div>  
-
-                    <div class="form-group">
+                  </div>  
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
                       <label for="nohp">No. HP</label>
                       <input class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>"
                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -114,16 +113,13 @@
                         <?php echo form_error('nohp') ?>
                       </div>
                     </div>
-
+                  </div>
                   <input class="btn btn-success" type="submit" name="btn" value="Save!" />
                 </form>
-    
               </div>
-    
               <div class="card-footer small text-muted">Semua Data Wajib diisi | Page rendered in <strong>{elapsed_time}</strong> seconds. 
-            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
-            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
-            </div>
+                   <?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+              </div>
     
     
             </div>

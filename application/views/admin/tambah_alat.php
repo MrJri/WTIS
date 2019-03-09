@@ -35,48 +35,52 @@
               </div>
               <div class="card-body">
                 <form action="<?php base_url('admin/tambah') ?>" method="post" enctype="multipart/form-data" >
-                  <div class="form-group">
-                    <label for="nama">Nama Alat*</label>
-                    <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-                     type="text" name="nama" placeholder="Mikrotik / Cisco / Juniper dll (?)" autofocus required/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('nama') ?>
-                    </div>
-                  </div>
-    
-                  <div class="form-group">
-                      <label for="jenis">Jenis*</label>
-                      <input class="form-control <?php echo form_error('jenis') ? 'is-invalid':'' ?>"
-                       type="text" name="jenis" placeholder="Router / Switch dll.." required/>
-                      <div class="invalid-feedback">
-                        <?php echo form_error('jenis') ?>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <label for="nama">Nama Alat*</label>
+                        <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
+                        type="text" name="nama" placeholder="Mikrotik / Cisco / Juniper dll (?)" autofocus required/>
+                        <div class="invalid-feedback">
+                          <?php echo form_error('nama') ?>
+                        </div>
                       </div>
+        
+                      <div class="form-group col-md-3">
+                          <label for="jenis">Jenis*</label>
+                          <input class="form-control <?php echo form_error('jenis') ? 'is-invalid':'' ?>"
+                          type="text" name="jenis" placeholder="Router / Switch dll.." required/>
+                          <div class="invalid-feedback">
+                            <?php echo form_error('jenis') ?>
+                          </div>
+                        </div>
                     </div>
-
-                  <div class="form-group">
-                    <label for="jumlah">Jumlah*</label>
-                    <input class="form-control <?php echo form_error('jumlah') ? 'is-invalid':'' ?>"
-                     type="number" name="jumlah" placeholder="Jumlah" required/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('jumlah') ?>
-                    </div>
-                  </div>
-    
-                  <div class="form-group">
-                      <label for="kondisi">Kondisi</label>
-                      <input class="form-control <?php echo form_error('kondisi') ? 'is-invalid':'' ?>"
-                      type="text" name="kondisi" placeholder="Baik / Buruk" />
-                      <div class="invalid-feedback">
-                        <?php echo form_error('kondisi') ?>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <label for="jumlah">Jumlah*</label>
+                        <input class="form-control <?php echo form_error('jumlah') ? 'is-invalid':'' ?>"
+                        type="number" name="jumlah" placeholder="Jumlah" required/>
+                        <div class="invalid-feedback">
+                          <?php echo form_error('jumlah') ?>
+                        </div>
                       </div>
+        
+                      <div class="form-group col-md-3">
+                          <label for="kondisi">Kondisi</label>
+                          <input class="form-control <?php echo form_error('kondisi') ? 'is-invalid':'' ?>"
+                          type="text" name="kondisi" placeholder="Baik / Buruk" />
+                          <div class="invalid-feedback">
+                            <?php echo form_error('kondisi') ?>
+                          </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                      <label for="status">Status</label>
-                      <input class="form-control <?php echo form_error('status') ? 'is-invalid':'' ?>"
-                       type="text" name="status" placeholder="Tersisa xx.." />
-                      <div class="invalid-feedback">
-                        <?php echo form_error('status') ?>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="status">Status</label>
+                        <input class="form-control <?php echo form_error('status') ? 'is-invalid':'' ?>"
+                        type="text" name="status" placeholder="Tersisa xx.." />
+                        <div class="invalid-feedback">
+                          <?php echo form_error('status') ?>
+                        </div>
                       </div>
                     </div> 
 
@@ -86,9 +90,8 @@
               </div>
     
               <div class="card-footer small text-muted">* Wajib diisi | Page rendered in <strong>{elapsed_time}</strong> seconds. 
-            <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . 
-            '</strong>' : '' ?><?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
-            </div>
+                   <?php //echo "Sekarang waktu menunjukkan pukul ", date("h:i A"), date(" l, d F Y");?>
+              </div>
 
             </div>
             <!-- /.container-fluid -->
