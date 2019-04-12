@@ -3,7 +3,7 @@ class Model_akun extends CI_Model{
 
     private $_table = "akun";
     
-    public function rules(){
+    public function rules_siswa(){
         return [
             ['field' => 'nama',
             'label' => 'Nama',
@@ -46,7 +46,7 @@ class Model_akun extends CI_Model{
             'rules' => 'required']
         ];
     }
-    
+
     public function getById($id){
         return $this->db->get_where($this->_table, ["id_akun" => $id])->row();
     }
@@ -65,6 +65,20 @@ class Model_akun extends CI_Model{
         $count = $result['COUNT(*)']; //convert array jadi string
         return $count;
     }
+
+    public function delete($id){
+        return $this->db->delete($this->_table, array("id_akun" => $id));
+    }
+
+    public function update_akun($id){
+        $post = $this->input->post();
+        $this->nama = $post["nama"];
+        $this->email = $post["email"];
+        $this->no_hp = $post["nohp"];
+        $this->password = md5($this->input->post("password"));
+        $this->db->update($this->_table, $this, array('id_akun' => $id));
+    }
+
 #<---------------------------------------          START     SISWA     -------------------------------------->
     public function getAllsiswa(){
         $this->db->where('level', 'siswa');
@@ -97,6 +111,17 @@ class Model_akun extends CI_Model{
         $this->password = md5($this->input->post("password"));
         $this->db->update($this->_table, $this, array('id_akun' => $post['id']));
     }
+
+    public function updateby_siswa($id){
+        $post = $this->input->post();
+        $this->nama = $post["nama"];
+        $this->email = $post["email"];
+        $this->tingkat = $post["tingkat"];
+        $this->kelas = $post["kelas"];
+        $this->no_hp = $post["nohp"];
+        $this->password = md5($this->input->post("password"));
+        $this->db->update($this->_table, $this, array('id_akun' => $id));
+    }
     
 #<---------------------------------------          START     GURU     -------------------------------------->
     public function getAllguru(){
@@ -117,21 +142,39 @@ class Model_akun extends CI_Model{
         $this->id_akun = uniqid();
         $this->nama = $post["nama"];
         $this->email = $post["email"];
+        $this->no_hp = $post["nohp"];
         $this->password = md5($this->input->post("password"));
         $this->level = "guru";
         $this->db->insert($this->_table, $this);
     }
 
-    public function update_guru(){
+#<---------------------------------------          END     GURU     -------------------------------------->
+
+    #<---------------------------------------          START     ASPIRAN     -------------------------------------->
+    public function getAllaspiran(){
+        $this->db->where('level', 'aspiran');
+        return $this->db->get($this->_table)->result();
+    }
+
+    public function getnamaaspiran(){
+        $query=$this->db->query("SELECT id_akun,nama FROM akun WHERE level='aspiran' ")->result();
+        return $query;
+        //$this->db->select('id', 'nama');
+        //$this->db->where('level', 'aspiran');
+        //return $this->db->get($this->_table)->result();
+    }
+
+    public function save_aspiran(){
         $post = $this->input->post();
+        $this->id_akun = uniqid();
         $this->nama = $post["nama"];
         $this->email = $post["email"];
         $this->no_hp = $post["nohp"];
         $this->password = md5($this->input->post("password"));
-        $this->db->update($this->_table, $this, array('id_akun' => $post['id']));
+        $this->level = "aspiran";
+        $this->db->insert($this->_table, $this);
     }
 
-    public function delete($id){
-        return $this->db->delete($this->_table, array("id_akun" => $id));
-    }
+#<---------------------------------------          END     ASPIRAN     -------------------------------------->
+
 }

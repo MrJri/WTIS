@@ -53,5 +53,6 @@ $route['default_controller'] = 'index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'admin/index';
+
 //$route['admin'] = 'admin/dashboard';
 //$route['auth'] = 'logincontroller/auth';

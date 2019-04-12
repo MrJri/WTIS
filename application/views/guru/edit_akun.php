@@ -2,18 +2,18 @@
 <html lang="en">
 
   <head>
-  <?php $this->load->view("admin/_partials/head.php") ?>
+  <?php $this->load->view("guru/_partials/head.php") ?>
   </head>
 
   <body id="page-top">
     
   <!-- Navbar-->
-  <?php $this->load->view("admin/_partials/navbar.php") ?>
+  <?php $this->load->view("guru/_partials/navbar.php") ?>
 
     <div id="wrapper">
 
       <!-- Sidebar-->
-      <?php $this->load->view("admin/_partials/sidebar.php") ?>
+      <?php $this->load->view("guru/_partials/sidebar.php") ?>
 
       <div id="content-wrapper">
 
@@ -22,7 +22,7 @@
         <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
-                    <a href="<?php echo site_url('admin//guru') ?>"><i class=""></i>
+                    <a href="<?php echo site_url('guru') ?>"><i class=""></i>
                     , Kembali</a>
 				</div>
 		<?php endif; ?>
@@ -31,18 +31,10 @@
           <div class="card mb-3">
               <div class="card-header">
                   <i class="fas fa-edit"></i>
-                  Edit Akun Admin
+                  Edit Akun Guru
               </div>
               <div class="card-body">
-                <form action="<?php base_url('admin/edit_akun') ?>" method="post" enctype="multipart/form-data" >
-                  <?php /*<div class="form-group">
-                    <label for="nama">NIP*</label>
-                    <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-                     type="number" name="nama" placeholder="08xxxxxxxx" autofocus required/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('nama') ?>
-                    </div>
-                  </div> */ ?>
+                <form action="<?php base_url('guru/edit_akun') ?>" method="post" enctype="multipart/form-data" >
                   <input type="hidden" name="id" value="<?php echo $akun->id_akun?>" />
                   <div class="form-row">
                   <div class="form-group col-md-3">
@@ -100,7 +92,7 @@
         <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
+            <?php $this->load->view("guru/_partials/footer.php") ?>
 
         </div>
         <!-- /.content-wrapper -->
@@ -108,11 +100,11 @@
     </div>
     <!-- /#wrapper -->
 
-    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+    <?php $this->load->view("guru/_partials/scrolltop.php") ?>
     <!-- Modal-->
-    <?php $this->load->view("admin/_partials/modal.php") ?>
+    <?php $this->load->view("guru/_partials/modal.php") ?>
     <!-- Js-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("guru/_partials/js.php") ?>
 
 </body>
 

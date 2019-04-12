@@ -2,18 +2,18 @@
 <html lang="en">
 
   <head>
-  <?php $this->load->view("admin/_partials/head.php") ?>
+  <?php $this->load->view("siswa/_partials/head.php") ?>
   </head>
 
   <body id="page-top">
     
   <!-- Navbar-->
-  <?php $this->load->view("admin/_partials/navbar.php") ?>
+  <?php $this->load->view("siswa/_partials/navbar.php") ?>
 
     <div id="wrapper">
 
       <!-- Sidebar-->
-      <?php $this->load->view("admin/_partials/sidebar.php") ?>
+      <?php $this->load->view("siswa/_partials/sidebar.php") ?>
 
       <div id="content-wrapper">
 
@@ -22,7 +22,7 @@
         <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
-                    <a href="<?php echo site_url('admin/siswa') ?>"><i class=""></i>
+                    <a href="<?php echo site_url('siswa') ?>"><i class=""></i>
                     , Kembali</a>
 				</div>
 		<?php endif; ?>
@@ -34,7 +34,7 @@
                   Edit Akun Siswa
               </div>
               <div class="card-body">
-                <form action="<?php base_url('admin/edit_siswa') ?>" method="post" enctype="multipart/form-data" >
+                <form action="<?php base_url('siswa/edit_siswa') ?>" method="post" enctype="multipart/form-data" >
                   <?php /*<div class="form-group">
                     <label for="nama">NIP*</label>
                     <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
@@ -47,10 +47,8 @@
                     <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="nis">NIS*</label>
-                        <input class="form-control <?php echo form_error('nis') ? 'is-invalid':'' ?>"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        type = "number" maxlength = "9"
-                         name="nis" placeholder="1711xxxx" value="<?php echo $akun->nis ?>" required autofocus/>
+                        <input class="form-control"
+                         name="nis"  value="<?php echo $akun->nis ?>" readonly/>
                         <div class="invalid-feedback">
                           <?php echo form_error('nis') ?>
                         </div>
@@ -133,7 +131,7 @@
         <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
+            <?php $this->load->view("siswa/_partials/footer.php") ?>
 
         </div>
         <!-- /.content-wrapper -->
@@ -141,11 +139,11 @@
     </div>
     <!-- /#wrapper -->
 
-    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+    <?php $this->load->view("siswa/_partials/scrolltop.php") ?>
     <!-- Modal-->
-    <?php $this->load->view("admin/_partials/modal.php") ?>
+    <?php $this->load->view("siswa/_partials/modal.php") ?>
     <!-- Js-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("siswa/_partials/js.php") ?>
 
 </body>
 

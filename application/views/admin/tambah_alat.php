@@ -73,17 +73,6 @@
                           </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="status">Status</label>
-                        <input class="form-control <?php echo form_error('status') ? 'is-invalid':'' ?>"
-                        type="text" name="status" placeholder="Tersisa xx.." />
-                        <div class="invalid-feedback">
-                          <?php echo form_error('status') ?>
-                        </div>
-                      </div>
-                    </div> 
-
                   <button class="btn btn-success" type="submit">Tambah Ya !</button>
                 </form>
     

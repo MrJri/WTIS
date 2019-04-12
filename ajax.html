@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Belajar Ajax</title>
+        <link rel="stylesheet" href="../stylesheet/css/bootstrap.min.css">
+    </head>
+    <body>
+        <h1 class="text-center m-5 p-5"> AJAX </h1>
+        <div class="fluid-container text-center">
+            <button id="button" type="button">Klik Disini</button>
+        </div>
+        <div class="fluid-container text-center">
+            <div class="content pt-5">
+                <div class="d-inline-block">
+                    <input type="text" style="width:200px">
+
+                </div>
+            </div>
+        </div>
+        <div class="fluid-container text-center">
+            <div id="content-ajax" class="pt-5">
+            </div>
+        </div>
+        
+
+        <script src="../stylesheet/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                /******************** .get in AJAX ******************/
+                // Method 1
+                     $('#button').on('click', function(){
+                         $('#content-ajax').load('ajax.php');
+                     });
+                
+                // Method 2
+                    // $('#button').click(function(){
+                    //     $.get('ajax.php', function(data, status){
+                    //         $('#content-ajax').html(data + status);
+                    //     });
+                    // })
+                
+                /******************** .post in AJAX ******************/
+                    // $('#button').click(function(){
+                    //     $.post('ajax.php', 
+                    //     {
+                    //         text:'Hello World'
+                    //     },
+                    //         function(data, status){
+                    //             $('#content-ajax').html(data + ' ' + status);      
+                    //     });
+                    // });
+
+                /******************** Implementasi .post dan .get *****************/
+                
+                $('.content > div > input ').keyup(function(){
+                    console.log($(this).val());
+
+                    $.post('ajax.php',
+                    {
+                        username:$(this).val()
+                    }, function(data, status){
+                        $('#content-ajax').html(data + ' ' + status);
+                    });
+                })
+            });
+        </script>
+    </body>
+</html>

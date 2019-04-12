@@ -49,7 +49,7 @@
             <i class="fas fa-user-circle fa-fw"></i> <?php echo $this->session->userdata('ses_nama');?>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/akun/edit_akun/'. $this->session->userdata('ses_id')) ?>">Edit Profile</a>
+            <a class="dropdown-item" href="<?php echo site_url('siswa/edit_akun/'. $this->session->userdata('ses_id')) ?>">Edit Profile</a>
             <a class="dropdown-item" href="#">Activity Log</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">Logout</a>

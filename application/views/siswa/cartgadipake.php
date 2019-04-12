@@ -40,16 +40,15 @@
                                                     </select> 
                                                 </td>
                                                 <td>
-                                                    <?php  $hitung=0; $b=0; foreach($this->cart->contents() as $items): ?>
-                                                    <?php echo form_hidden('id_alat'.$hitung.'', $items['id']); ?>
-                                                    <?php echo form_hidden('jumlah_pinjam'.$hitung.'', $items['qty']); ?>
-                                                    <?php echo form_hidden('id_siswa', $this->session->userdata('ses_id')); ?>
-                                                    <?php $b=$hitung+1; ?>
-                                                    <?php $hitung++; ?>
-                                                    <?php endforeach; ?>
-                                                    <?php echo form_hidden('jumlah_alat', $b); ?>
-                                                    <?php echo anchor('siswa/empty_cart', 'Hapus Semua', 'class="btn btn-danger btn-sm col-sm-5"'); ?>
-                                                    <?php echo form_submit('', 'Pinjam!', 'class="btn btn-primary btn-sm col-sm-5"');?>            
+                                                    <?php   $hitung=0; $b=0; foreach($this->cart->contents() as $items):?>
+                                                     <?     echo form_hidden('id_alat'.$hitung.'', $items['id']); 
+                                                            echo form_hidden('jumlah_pinjam'.$hitung.'', $items['qty']);
+                                                            $b=$hitung+1; 
+                                                            $hitung++; 
+                                                            endforeach; 
+                                                            echo form_hidden('jumlah_alat', $b); 
+                                                            echo anchor('siswa/destroy_cart', 'Hapus Semua', 'class="btn btn-danger btn-sm col-sm-5"'); 
+                                                            echo form_submit('', 'Pinjam!', 'class="btn btn-primary btn-sm col-sm-5"');?>
                                                 </td>
                                             </tr>
                                         </table>

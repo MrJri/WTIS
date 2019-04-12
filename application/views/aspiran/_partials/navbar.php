@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
 
-       <a class="navbar-brand mr-1" href="<?php echo site_url('admin') ?>">WETEIES</a>
+       <a class="navbar-brand mr-1" href="<?php echo site_url('aspiran') ?>">WETEIES</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -49,7 +49,7 @@
             <i class="fas fa-user-circle fa-fw"></i> <?php echo $this->session->userdata('ses_nama');?>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/edit_akun') ?>">Edit Profile</a>
+            <a class="dropdown-item" href="<?php echo site_url('aspiran/edit_akun') ?>">Edit Profile</a>
             <a class="dropdown-item" href="#">Activity Log</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">Logout</a>

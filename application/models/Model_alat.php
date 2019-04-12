@@ -73,9 +73,9 @@ class Model_alat extends CI_Model
 		}
     }
     
-    function validate_update_cart($total){
+    function validate_update_cart($total_alat){
 		// Cycle true all items and update them
-		for($i=0;$i < $total;$i++){
+		for($i=0;$i < $total_alat;$i++){
             // Retrieve the posted information
             $item = $this->input->post('rowid['.$i.']');
             $qty = $this->input->post('qty['.$i.']');
@@ -111,7 +111,7 @@ class Model_alat extends CI_Model
         $this->jumlah = $post["jumlah"];
         $this->kondisi = $post["kondisi"];
         $this->jenis = $post["jenis"];
-        $this->status_alat = $post["status"];
+        $this->status_alat = $post["jumlah"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -125,6 +125,7 @@ class Model_alat extends CI_Model
         $this->jenis = $post["jenis"];
         $this->status_alat = $post["status"];
         $this->db->update($this->_table, $this, array('id_alat' => $post['id']));
+        //disini tambahin kode buat update status_alat kalo jumlah alatnya nambah/kurang
     }
 
     public function delete($id)

@@ -22,7 +22,7 @@
         <div class="card mb-3">
             <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Daftar Alat yang ingin dikembalikan siswa</div>
+            Daftar Histori Peminjaman</div>
             <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -33,25 +33,21 @@
                     <th>Nama Siswa</th>
                     <th>Penanggung Jawab</th>
                     <th>Waktu Pinjam</th>
+                    <th>Waktu Kembali</th>
                     <th>Ket.</th>
-                    <th style="text-align: center;">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                <?php foreach ($pengembalian as $pengembalians): ?>       
+                <?php foreach ($history as $historys): ?>       
                 <tr>
-                    <td><?php echo $pengembalians->nama_alat ?></td>
-                    <td><?php echo $pengembalians->jumlah_pinjam ?></td>
-                    <td><?php echo $pengembalians->siswa ?></td>
-                    <td><?php echo $pengembalians->guru ?></td>
-                    <td><?php echo $pengembalians->tanggal_peminjaman ?></td>
-                    <td><?php echo $pengembalians->ket ?></td>
-                    <td style="text-align: center;">
-                    <a onclick="konfirmasiPengembalian('<?php echo site_url('admin/submit_pengembalian/'
-                        .$pengembalians->id_peminjaman) ?>')" 
-                        class="btn btn-primary submit" type="submit "title="OK" style="color:white;" href="#">
-                        <i class="fa fa-thumbs-up"></i></a></td>
+                    <td><?php echo $historys->nama_alat ?></td>
+                    <td><?php echo $historys->jumlah_pinjam ?></td>
+                    <td><?php echo $historys->siswa ?></td>
+                    <td><?php echo $historys->guru ?></td>
+                    <td><?php echo $historys->tanggal_peminjaman ?></td>
+                    <td><?php echo $historys->tanggal_pengembalian ?></td>
+                    <td><?php echo $historys->ket ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

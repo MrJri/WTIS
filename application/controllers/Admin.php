@@ -67,18 +67,20 @@ class Admin extends CI_Controller {
     public function edit_pinjaman(){       
         echo "<script>alert('sampe controller');
                 </script>";
-        if($this->model_peminjaman->edit_pinjaman()){
+        $this->model_peminjaman->edit_pinjaman();/*{
             echo "<script>alert('Sukses ! Keterangan telah diedit.');
                 </script>";
             redirect(site_url('admin/pinjamkan'));
-        }
+        }*/
     }
 
     public function hapus_pinjaman($id=null){       
-        if (!isset($id)) redirect('admin/pinjamkan');
-        if($this->model_peminjaman->hapus_pinjaman($id)){
-            redirect('admin/alat/pinjamkan');
-            }
+        if (!isset($id)){echo 'no ID!';}
+        else{
+            $this->model_peminjaman->tambahstatusalat($id);
+            $this->model_peminjaman->hapus_pinjaman($id);
+            redirect('aspiran/pinjamkan');
+        }
     }
 
     public function submit_pinjamkan($id=null){       
@@ -93,10 +95,12 @@ class Admin extends CI_Controller {
     }
 
     public function submit_pengembalian($id=null){       
-        if (!isset($id)) redirect('admin/pengembalian');
-        if($this->model_peminjaman->submit_pengembalian($id)){
-            redirect('admin/pengembalian');
-            }
+        if (!isset($id)) {echo 'no ID!';}
+        else {
+            $this->model_peminjaman->tambahstatusalat($id);
+            $this->model_peminjaman->submit_pengembalian($id);
+            redirect('aspiran/pengembalian');
+        }
     }
 
     public function delete($id=null){
@@ -105,22 +109,26 @@ class Admin extends CI_Controller {
             redirect(site_url('admin/daftar'));
         }
     }
+    function history(){
+        $data["history"] = $this->model_peminjaman->history();
+        $this->load->view('admin/history', $data);
+    }
 
   ###########################                  START CONTROLER AKUN               ##########################
 
   #           ================                     BUAT ADMIN                      ============
-  public function edit_akun($id = null){
-        if (!isset($id)) redirect('admin');       
+  public function edit_akun(){
+        $id= $this->session->userdata('ses_id');
         $akun = $this->model_akun;
         $validation = $this->form_validation;
         $validation->set_rules($akun->rules_guru());
         if ($validation->run()) {            
-            $akun->update_guru();
+            $akun->update_akun($id);
             $this->session->set_flashdata('success', 'Data Admin Berhasil Disimpan');
         }
         $data["akun"] = $akun->getById($id);
         if (!$data["akun"]) show_404();
-        $this->load->view("admin/edit_admin", $data);
+        $this->load->view("admin/edit_akun", $data);
     }
 
   #           ================                     END ADMIN                       =============
@@ -144,7 +152,7 @@ class Admin extends CI_Controller {
         if (!isset($id)) redirect('admin/siswa');       
         $akun = $this->model_akun;
         $validation = $this->form_validation;
-        $validation->set_rules($akun->rules());
+        $validation->set_rules($akun->rules_siswa());
         if ($validation->run()) {            
             $akun->update_siswa();
             $this->session->set_flashdata('success', 'Data Akun Siswa Berhasil Disimpan');
@@ -157,7 +165,7 @@ class Admin extends CI_Controller {
     public function tambah_siswa(){
         $akun = $this->model_akun;
         $validation = $this->form_validation;
-        $validation->set_rules($akun->rules());
+        $validation->set_rules($akun->rules_siswa());
         if ($validation->run()) {
             $akun->save_siswa();
             $this->session->set_flashdata('success', 'Data Siswa Berhasil Disimpan');
@@ -209,5 +217,47 @@ class Admin extends CI_Controller {
         $this->load->view("admin/tambah_guru.php");
     }
     #<---------------------------------------          END     GURU     -------------------------------------->
+
+    #<---------------------------------------          START     ASPIRAN     -------------------------------------->
+    public function aspiran(){
+        $data["aspiran"] = $this->model_akun->getAllaspiran();
+        // load view admin/daftar_aspiran.php
+        $this->load->view("admin/daftar_aspiran", $data);
+    }
+
+    public function delete_aspiran($id=null){
+        if (!isset($id)) show_404();    
+        if ($this->model_akun->delete($id)) {
+                redirect(site_url('admin/aspiran'));
+            }
+    }
+
+    public function edit_aspiran($id = null){
+        if (!isset($id)) redirect('admin/aspiran');       
+        $akun = $this->model_akun;
+        $validation = $this->form_validation;
+        $validation->set_rules($akun->rules_guru());
+        if ($validation->run()) {            
+            $akun->update_aspiran();
+            $this->session->set_flashdata('success', 'Data Akun Aspiran Berhasil Disimpan');
+        }
+        $data["akun"] = $akun->getById($id);
+        if (!$data["akun"]) show_404();
+        $this->load->view("admin/edit_aspiran", $data);
+    }
+
+    public function tambah_aspiran(){
+        $akun = $this->model_akun;
+        $validation = $this->form_validation;
+        $validation->set_rules($akun->rules_guru());
+        if ($validation->run()) {
+            $akun->save_aspiran();
+            $this->session->set_flashdata('success', 'Data Aspiran Berhasil Disimpan');
+        }
+        // load view admin/tambah_aspiran.php
+        $this->load->view("admin/tambah_aspiran.php");
+    }
+    #<---------------------------------------          END     ASPIRAN     -------------------------------------->
+
 
 }
